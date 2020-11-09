@@ -1,5 +1,7 @@
 # Lunky Helper
 
+A simple program to keep track of Hou Yi's Bow as well as orbs in the Cosmic Ocean.
+
 ## Prerequisites
 
 1. Python 3.x
