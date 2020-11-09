@@ -18,6 +18,7 @@ pip install pygame
 1. PyWinhook does not support controllers, so you will have to use Joy2Key. 
     - The default key for the bow is "Right"
     - The default key for orbs is "Left"
+    - Personally I like to bind orbs to L1 and bow to L2 or L3
 1. Use Python to execute `main.py'. Open a command prompt and execute the following:
 
 ```
