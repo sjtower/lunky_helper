@@ -1,5 +1,6 @@
 import pyWinhook as pyHook
 import pygame
+import os
 
 COUNT = 0
 BOW_STATE = 0
@@ -43,6 +44,9 @@ hm.HookKeyboard()
 
 def main():
     pygame.init()
+
+    os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (5, 50)
+
     pygame.joystick.init()
 
     print("Available controllers: " + str(pygame.joystick.get_count()))
@@ -53,7 +57,7 @@ def main():
     display_width = 100
     display_height = 233
 
-    game_display = pygame.display.set_mode((display_width, display_height))
+    game_display = pygame.display.set_mode((display_width, display_height), 0, 32)
     pygame.display.set_caption('Lunky Helper')
 
     black = (0, 0, 0)

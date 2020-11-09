@@ -1,0 +1,1 @@
+B:\Projects\lunky_helper\venv\Scripts\python.exe B:\Projects\lunky_helper\main.py
