@@ -4,6 +4,7 @@ import os
 
 COUNT = 0
 BOW_STATE = 0
+SISTER_COUNT = 0
 
 
 # method to handle keyboard presses while this program is not in focus.
@@ -28,6 +29,9 @@ def OnKeyboardEvent(event):
 
     if event.Key == 'Right':
         cycle_bow()
+
+    if event.Key == 'Up':
+        cycle_sister_count()
 
     # return True to pass the event to other handlers
     # return False to stop the event from propagating
@@ -71,6 +75,9 @@ def main():
     # load the bow and orb images into pygame
     orb_image = pygame.image.load('SpelunkOrb.png')
     bow_image = pygame.image.load('SpelunkBow.png')
+    sister_image_1 = pygame.image.load('SpelunkSister1.png')
+    sister_image_2 = pygame.image.load('SpelunkSister2.png')
+    sister_image_3 = pygame.image.load('SpelunkSister3.png')
 
     x = 0
     y = 0
@@ -79,23 +86,11 @@ def main():
     while not crashed:
         game_display.fill(black)
 
-        # while COUNT goes up, display more orbs. COUNT is reset to 0 when it reaches 3
-        if COUNT > 0:
-            # display the first orb
-            game_display.blit(orb_image, (x, y + 55))
-        if COUNT > 1:
-            # display the second orb
-            game_display.blit(orb_image, (x, y + 48 + 55))
-        if COUNT > 2:
-            # display the third orb
-            game_display.blit(orb_image, (x, y + 96 + 55))
+        display_orbs(game_display, orb_image, x, y)
 
-        if BOW_STATE == 1:
-            # display the bow
-            game_display.blit(bow_image, (x + 20, y))
-        elif BOW_STATE == 2 and i % 4 == 0:
-            # display the bow with a flashing effect every 4th update
-            game_display.blit(bow_image, (x + 20, y))
+        display_bow(bow_image, game_display, i, x, y)
+
+        display_sisters(game_display, sister_image_1, sister_image_2, sister_image_3, x, y)
 
         # go through all the pygame events for processing. We don't do much here because we process via pyWinhook
         for event in pygame.event.get():
@@ -112,6 +107,41 @@ def main():
     quit()
 
 
+def display_orbs(game_display, orb_image, x, y):
+    # while COUNT goes up, display more orbs. COUNT is reset to 0 when it reaches 3
+    if COUNT > 0:
+        # display the first orb
+        game_display.blit(orb_image, (x, y + 55))
+    if COUNT > 1:
+        # display the second orb
+        game_display.blit(orb_image, (x, y + 103))
+    if COUNT > 2:
+        # display the third orb
+        game_display.blit(orb_image, (x, y + 151))
+
+
+def display_bow(bow_image, game_display, i, x, y):
+    if BOW_STATE == 1:
+        # display the bow
+        game_display.blit(bow_image, (x + 20, y))
+    elif BOW_STATE == 2 and i % 4 == 0:
+        # display the bow with a flashing effect every 4th update
+        game_display.blit(bow_image, (x + 20, y))
+
+
+def display_sisters(game_display, sister_image_1, sister_image_2, sister_image_3, x, y):
+    # while COUNT goes up, display more sisters. SISTER_COUNT is reset to 0 when it reaches 3
+    if SISTER_COUNT > 0:
+        # display the first sister
+        game_display.blit(sister_image_1, (x, y + 55))
+    if SISTER_COUNT > 1:
+        # display the second sister
+        game_display.blit(sister_image_2, (x, y + 105))
+    if SISTER_COUNT > 2:
+        # display the third sister
+        game_display.blit(sister_image_3, (x, y + 155))
+
+
 def cycle_orb_count():
     global COUNT
     if COUNT > 2:
@@ -124,6 +154,13 @@ def cycle_bow():
     if BOW_STATE > 1:
         BOW_STATE = -1
     BOW_STATE = BOW_STATE + 1
+
+
+def cycle_sister_count():
+    global SISTER_COUNT
+    if SISTER_COUNT > 2:
+        SISTER_COUNT = -1
+    SISTER_COUNT = SISTER_COUNT + 1
 
 
 if __name__ == '__main__':
