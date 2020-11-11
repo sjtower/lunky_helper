@@ -21,14 +21,13 @@ pip install pygame
     - The default key for the bow is "Right"
     - The default key for orbs is "Left"
     - Personally I like to bind orbs to L1 and bow to L2 or L3
-1. Use Python to execute `main.py'. Open a command prompt and execute the following:
-
-```
-"Path where your Python exe is stored\python.exe" "Path where your downloaded main.py"
-
-EG
-
-B:\Projects\lunky_helper\venv\Scripts\python.exe B:\Projects\lunky_helper\main.py
-```
-
-You may have to navigate to the directory where you downloaded the program for the images to load correctly.
+1. Open a command prompt and execute the following:
+    - navigate to where you downloaded the program. EG:
+    ```
+        cd C:\Users\Oliver\Downloads\lunky_helper
+    ```
+   - Use Python to execute `main.py':
+   ```
+        python main.py
+   ```
+1. I use a .bat file to run these steps. There is an example included in the download directory.
