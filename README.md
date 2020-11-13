@@ -1,4 +1,6 @@
-# Lunky Helper
+# GetimOliver's Lunky Helper
+
+https://www.twitch.tv/getimoliver
 
 A simple program to keep track of things in Spelunky 2.
  1. Hou Yi's Bow
